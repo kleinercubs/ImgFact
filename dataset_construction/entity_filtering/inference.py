@@ -4,7 +4,6 @@ import numpy as np
 import os
 from torch import nn
 from PIL import Image
-from torch.nn import CrossEntropyLoss
 from torch.utils.data import DataLoader
 import csv
 import random
@@ -15,8 +14,6 @@ import torchvision.transforms as transforms
 import random
 import time
 import copy
-import torch.distributed as dist
-from torch.nn.parallel import DistributedDataParallel as DDP
 from dataloading import DataChunk, DataCollection
 import argparse
 parser = argparse.ArgumentParser()

@@ -4,9 +4,14 @@ This is the official github repository for the paper "ImgFact: Triplet Fact Grou
 
 We presented our implementation of ImgFact's construction pipeline and the experiments, and released the ImgFact dataset.
 
+
+## Overview
+
 <img src="imgs/motivation.jpg"/>
 
 We introduce a new task of triplet fact grounding, which aims to collect images that embody entities and their relation. For example, given a triplet fact (**David_Beckham**, **Spouse**, **Victoria_Beckha**), we expect to find intimate images of **David_Beckham** and **Victoria_Beckha**, as shown in Fig. 
+
+## Data Format
 
 ## Download
 The dataset can be accessed by [GoogleDrive](https://drive.google.com/drive/folders/17MWnf1hQFuOLJ-8iIe0w7Culhy2DJBzE?usp=sharing).

@@ -9,7 +9,10 @@ We presented our implementation of ImgFact's construction pipeline and the exper
 
 <img src="imgs/motivation.jpg"/>
 
-We introduce a new task of triplet fact grounding, which aims to collect images that embody entities and their relation. For example, given a triplet fact (**David_Beckham**, **Spouse**, **Victoria_Beckha**), we expect to find intimate images of **David_Beckham** and **Victoria_Beckha**, as shown in Fig. 
+ImgFact is a dataset constructed for a new task that we introduced: triplet fact grounding, which aims to collect images that embody entities and their relation. For example, given a triplet fact (**David_Beckham**, **Spouse**, **Victoria_Beckha**), we expect to find intimate images of **David_Beckham** and **Victoria_Beckha**, as shown in Fig. 
+
+In ImgFact, we present a large amount of image-triplet pairs, where the images embody the two entites and the relation between them of the correlated triplet.
+
 
 ## Data Format
 

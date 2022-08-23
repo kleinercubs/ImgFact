@@ -1,7 +1,8 @@
 # ImgFact
 
-Code and data for paper "ImgFact: Triplet Fact Grounding on Images"
+This is the official github repository for the paper "ImgFact: Triplet Fact Grounding on Images"
 
+We presented our implementation of ImgFact's construction pipeline and the experiments, and released the ImgFact dataset.
 
 <img src="imgs/motivation.jpg"/>
 

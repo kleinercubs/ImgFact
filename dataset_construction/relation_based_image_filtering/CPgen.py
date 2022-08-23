@@ -20,6 +20,8 @@ import argparse
 
 parser = argparse.ArgumentParser()
 parser.add_argument('--file', type=str, default='001', help='File index.')
+parser.add_argument("--do_train", action='store_true', help="Whether to run training.")
+parser.add_argument("--do_predict", action='store_true', help="Whether to run training.")
 
 args = parser.parse_args()
 # import tensorflow._api.v2.compat.v1 as tf
@@ -178,7 +180,7 @@ class SaveBest(keras.callbacks.Callback):
         self.sent_mfn = mfns[1]
         self.val_loss = 100.
         data = []
-        fn = os.path.join(DATA_DIR,"explanation/valid_imgfact.json")
+        fn = os.path.join(DATA_DIR,"valid_imgfact.json")
         with open(fn,"r",encoding="utf-8") as rf:
             for line in rf:
                 d = json.loads(line)
@@ -256,8 +258,6 @@ class CPModel:
 
     def train(self,train_data,valid_data,mfns=None,eval_fn=None,plot=True):
         
-        # strategy = tf.distribute.MultiWorkerMirroredStrategy()  # 建立单机多卡策略
-        # with strategy.scope():  # 调用该策略
         if not self.model:
             self.build(compile=True)
         if mfns:
@@ -277,7 +277,6 @@ class CPModel:
             callbacks=callbacks,
         )
         if plot:
-            # print(history.history.keys())
             try:
                 self.plot_results(history)
             except Exception as e:
@@ -307,7 +306,6 @@ class CPModel:
             for sent in candidates:
                 sent_token,sent_segment = tokenizer.encode(sent)
                 sent_cls = self.sent_MLM.predict([np.array([sent_token]),np.array([sent_segment])])[0,0,:]
-                # print(pair_cls.shape, sent_cls.shape)
                 cur_res.append(np.dot(pair_cls,sent_cls))
             cur_res = np.array(cur_res)
             y_pred = np.argsort(cur_res)[:5]
@@ -316,7 +314,7 @@ class CPModel:
                 acc_count += 1
             x = d + [[candidates[i] for i in y_pred]] + [[str(i) for i in y_pred]] + [[str(i) for i in cur_res]]
             res.append(x)
-            bar.set_description("hit@10: {}, ACC@10: {}".format(acc_count, acc_count/tot_count))
+            bar.set_description("hit@5: {}, {}".format(acc_count, acc_count/tot_count))
         with open(out_fn,"w",encoding="utf-8") as wf:
             for x in res:
                 d = {
@@ -411,28 +409,25 @@ class CPModel:
         plt.close()
 
 def main():
-    train_fn = os.path.join(DATA_DIR,"explanation/train_imgfact.json")
-    valid_fn = os.path.join(DATA_DIR,"explanation/valid_imgfact.json")
-    train_data = load_data(train_fn)
-    valid_data = load_data(valid_fn)
+    if args.do_trian:
+        train_fn = os.path.join(DATA_DIR,"train_imgfact.json")
+        valid_fn = os.path.join(DATA_DIR,"valid_imgfact.json")
+        train_data = load_data(train_fn)
+        valid_data = load_data(valid_fn)
 
-    model = CPModel(0, 32)
-    model.train(train_data,valid_data)
-    # model = CPModel(0, 32)
-    model.sent_MLM.load_weights(os.path.join(MODEL_DIR,"model_sent_v0428.h5"))
-    model.pair_MLM.load_weights(os.path.join(MODEL_DIR,"model_pair_v0428.h5"))
+        model = CPModel(100, 32)
+        model.train(train_data,valid_data)
+        test_fn = os.path.join(DATA_DIR,"valid_imgfact.json")
+        out_fn = os.path.join(DATA_DIR,"valid_imgfact_res.json")
+        model.inference(test_fn,out_fn)
+    if args.do_predict:
+        model = CPModel(0, 32)
+        model.sent_MLM.load_weights(os.path.join(MODEL_DIR,"model_sent.h5"))
+        model.pair_MLM.load_weights(os.path.join(MODEL_DIR,"model_pair.h5"))
 
-    test_fn = os.path.join(DATA_DIR,"explanation/valid_imgfact.json")
-    out_fn = os.path.join(DATA_DIR,"explanation/valid_imgfact_res.json")
-    model.inference(test_fn,out_fn)
-    # model.evaluate(out_fn)
-
-    # test_fn = os.path.join(DATA_DIR,"title/Triplelist{}.tfrecords".format(args.file))
-    # out_fn = os.path.join(DATA_DIR,"title/Triplelist{}.txt".format(args.file))
-    # test_fn = os.path.join(DATA_DIR,"explanation/valid_db_new.tfrecords")
-    # out_fn = os.path.join(DATA_DIR,"explanation/valid_db_new.txt")
-    # model.infer_out(test_fn,out_fn)
-    # model.evaluate(out_fn)
+        test_fn = os.path.join(DATA_DIR,"Triplelist{}.json".format(file))
+        out_fn = os.path.join(DATA_DIR,"Triplelist{}_res.json".format(file))
+        model.infer_out(test_fn,out_fn)
 
 if __name__ == '__main__':
     

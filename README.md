@@ -56,8 +56,8 @@ All the codes related to the dataset construction pipeline are in [data_construc
 - Relation Filtering: First run `filter_tuples.py` , then run `gen_sample_tuples.py`, after that run `gen_candidate_relations.py`, and finally run `gen_visual_relations.py` and apply pre-defined thresholds to get the result.
 - Entity-based Image Filtering: Run `ptuningfilter.py` and `ptuningfilter_ent.py` respectively and aggregate the results by getting their intersection as the filter result.
 - Image Collection: Apply any toolbox that can collect images from search engines.
-- Relation-based Image Filtering:
-- Clustering:
+- Relation-based Image Filtering: Run `CPgen.py --do_train` for training stage, and `CPgen.py --do_predict --file {XXX}` for inference stage. Note that `XXX` denotes the 3 digit file id, starts with leading zero, e.g. 001.
+- Clustering: Run `cluster.py` to get the final clustering result.
 
 Our implementation of the pipeline can be found here, in which all the steps except image collection is included in this repo. For image collection, we refer to this [repo]() for reference.
 

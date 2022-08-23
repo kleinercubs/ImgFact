@@ -15,6 +15,22 @@ We introduce a new task of triplet fact grounding, which aims to collect images 
 
 Here we describe how ImgFact is stored and organized. The ImgFact dataset is split into 30 subsets and each subset is compressed into a `.zip` file named as `TriplelistXXX.zip` (XXX is the index ranging from 001 to 030) .
 
+In each subset of ImgFact, The files are organized as follows:
+
+    |-TriplelistXXX
+        |-relation1
+            |-"Entity1 Entity2"
+                |-1.jpg
+                |-2.jpg
+                |-3.jpg
+                ...
+        |-relation2
+        |-relation3
+        ...
+    ...
+
+The name of the subdirectories, for example "realation1" or "relation2", in the triplelist root directory indicates the relation of the triplet that the images in it embody, and the name of the second-level subdirectories, like "Entity1 Entity2", is composed of two entity names splitted by a space meaning the two entities of the triplet that the images in it embody.
+
 ## Download
 The dataset can be accessed by [GoogleDrive](https://drive.google.com/drive/folders/17MWnf1hQFuOLJ-8iIe0w7Culhy2DJBzE?usp=sharing).
 

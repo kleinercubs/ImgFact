@@ -4,6 +4,15 @@ This is the official github repository for the paper "ImgFact: Triplet Fact Grou
 
 We presented our implementation of ImgFact's construction pipeline and the experiments, and released the ImgFact dataset.
 
+## Contents
+
+- [Overview](#overview)
+- [Data Format](#data-format)
+- [Download](#download)
+- [Dataset Construction](#dataset-construction)
+- [Dataset Evaluation](#dataset-evaluation)
+- [License](#license)
+- [Citation](#citation)
 
 ## Overview
 
@@ -35,17 +44,19 @@ In each subset of ImgFact, The files are organized as follows:
 The name of the subdirectories, for example "realation1" or "relation2", in the triplelist root directory indicates the relation of the triplet that the images in it embody, and the name of the second-level subdirectories, like "Entity1 Entity2", is composed of two entity names splitted by a space meaning the two entities of the triplet that the images in it embody.
 
 ## Download
-The dataset can be accessed by [GoogleDrive](https://drive.google.com/drive/folders/17MWnf1hQFuOLJ-8iIe0w7Culhy2DJBzE?usp=sharing).
+Here we provide a release version of ImgFact. The dataset can be accessed by [GoogleDrive](https://drive.google.com/drive/folders/17MWnf1hQFuOLJ-8iIe0w7Culhy2DJBzE?usp=sharing).
 
-There are 30 different `.zip` files. Take `Triplelist001.zip` as an example, the images inside is named followed the rule `relation/head_entity tail_entity/idx.jpg`.
+The dataset is splitted into 30 different `.zip` chunk files, each one is about 1GB large. Take `Triplelist001.zip` as an example, the images inside is named followed the rule `relation/head_entity tail_entity/idx.jpg`.
 
-## Construction Codes
+## Dataset Construction
 All the codes related to the dataset construction pipeline are in [data_construction](https://github.com/kleinercubs/ImgFact/tree/main/dataset_construction).
 
-## Evaluation Codes
+## Dataset Evaluation
 All the codes related to the dataset evaluation are in [evaluation](https://github.com/kleinercubs/ImgFact/tree/main/evaluation).
 
 ## License
 [![](https://i.creativecommons.org/l/by/4.0/88x31.png)](http://creativecommons.org/licenses/by/4.0/)
 
 This work is licensed under a [Creative Commons Attribution 4.0 International License](http://creativecommons.org/licenses/by/4.0/)
+
+## Citation

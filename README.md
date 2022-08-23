@@ -50,11 +50,12 @@ The dataset is splitted into 30 different `.zip` chunk files, each one is about 
 
 ## Dataset Construction
 
-All the codes related to the dataset construction pipeline are in [data_construction](https://github.com/kleinercubs/ImgFact/tree/main/dataset_construction).
+All the codes related to the dataset construction pipeline are in [data_construction](https://github.com/kleinercubs/ImgFact/tree/main/dataset_construction). The construction pipeline should run by the following order:
 
 - Entity Filtering: Run `inference.py` to filter entities with a trained classifier.
 - Relation Filtering: First run `filter_tuples.py` , then run `gen_sample_tuples.py`, after that run `gen_candidate_relations.py`, and finally run `gen_visual_relations.py` and apply pre-defined thresholds to get the result.
 - Entity-based Image Filtering: Run `ptuningfilter.py` and `ptuningfilter_ent.py` respectively and aggregate the results by getting their intersection as the filter result.
+- Image Collection: Apply any toolbox that can collect images from search engines.
 - Relation-based Image Filtering:
 - Clustering:
 

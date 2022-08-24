@@ -44,6 +44,8 @@ In each subset of ImgFact, The files are organized as follows:
 
 The name of the subdirectories, for example "realation1" or "relation2", in the triplelist root directory indicates the relation of the triplet that the images in it embody, and the name of the second-level subdirectories, like "Entity1 Entity2", is composed of two entity names splitted by a space meaning the two entities of the triplet that the images in it embody.
 
+For example, the image `Triplelist001/relation/head_ent tail_ent/1.jpg` means that the image embodies the triplet `head_ent relation tail_ent` in it.
+
 ## Download
 
 Here we provide a release version of ImgFact. The dataset can be accessed by [GoogleDrive](https://drive.google.com/drive/folders/17MWnf1hQFuOLJ-8iIe0w7Culhy2DJBzE?usp=sharing).

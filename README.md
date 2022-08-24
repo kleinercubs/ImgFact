@@ -27,13 +27,13 @@ For example, given a triplet fact (**David_Beckham**, **Spouse**, **Victoria_Bec
 
 ## Download
 
-Here we provide a release version of ImgFact. The dataset can be accessed by [GoogleDrive](https://drive.google.com/drive/folders/17MWnf1hQFuOLJ-8iIe0w7Culhy2DJBzE?usp=sharing).
+Here we provide a release version of ImgFact. The full dataset including all the images and the corresponding triplets can be accessed by [GoogleDrive](https://drive.google.com/drive/folders/17MWnf1hQFuOLJ-8iIe0w7Culhy2DJBzE?usp=sharing).
 
 The triplets to path map file is [triplet_path_mapping.json](https://github.com/kleinercubs/ImgFact/blob/main/triplet_path_mapping.json).
 
 ## ImgFact API
 
-Here we provide a easy-to-use API to enable easy access of ImgFact data. You can use the api to explore ImgFact by:
+ Here we provide a easy-to-use API to enable easy access of ImgFact data. Before using the ImgFact api, you should download both the dataset and the `triplet_path_mapping.json` into one directory. You can use the api to explore ImgFact by:
 
 ```python
 >>> from imgfact_api import ImgFactDataset

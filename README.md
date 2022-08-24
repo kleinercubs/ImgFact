@@ -13,7 +13,7 @@ We presented our implementation of ImgFact's construction pipeline and the exper
   - [ImgFact API](#imgfact-api)
   - [Data Format](#data-format)
   - [Dataset Construction](#dataset-construction)
-  - [Dataset Evaluation](#dataset-evaluation)
+  - [Dataset Evaluation and Application](#dataset-evaluation)
   - [License](#license)
 
 ## Overview
@@ -128,9 +128,11 @@ Note: `XXX` denotes the 3 digit file id, starts with leading zero, e.g. `001`.
 python cluster.py
 ```
 
-## Dataset Evaluation
+## Dataset Evaluation and Application
 
-All the codes related to the dataset evaluation are in [evaluation](https://github.com/kleinercubs/ImgFact/tree/main/evaluation).
+All the codes related to the dataset evaluation and application are in [eval_and_app](https://github.com/kleinercubs/ImgFact/tree/main/eval_and_app).
+
+The evaluation and application are similar. The only difference is the information the model received.
 
 - Generate sub-task datasets by simply run script `generation.sh`.
 - Training and evaluation with different models on different sub-task:
@@ -153,7 +155,9 @@ Note: If you want to perform the experiments by using only text information, use
 python multimodal_naive.py --dataset {TASK_NAME} --epochs 150 --lr 3e-5 --optimizer ranger --modality text
 ```
 
-Default `TASK_NAME` includes `predict_s/spo`, `predict_s/p`, `predict_s/o`, `predict_s/messy`, `predict_p/spo`, `predict_p/s`, `predict_p/o`, `predict_p/messy`, `predict_o/spo`, `predict_o/s`, `predict_o/p` and `predict_o/messy`. The specific task name follows the naming rules: `predict_{predict target}/{known information}`. For examples, `predict_s/spo` means given the images containing all the information of the triplets and want the model to predict the missing head entity. 
+Default `TASK_NAME` includes `predict_s/spo`, `predict_s/p`, `predict_s/o`, `predict_s/messy`, `predict_p/spo`, `predict_p/s`, `predict_p/o`, `predict_p/messy`, `predict_o/spo`, `predict_o/s`, `predict_o/p` and `predict_o/messy`. 
+
+The specific task name follows the naming rules: `predict_{predict target}/{known information}`. For examples, `predict_s/spo` means given the images containing all the information of the triplets and want the model to predict the missing head entity. 
 
 ## License
 

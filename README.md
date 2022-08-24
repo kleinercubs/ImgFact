@@ -41,6 +41,27 @@ dataset = ImgFactDataset()
 dataset.load_data(use_sample=True)
 ```
 
+To list all the relations and entities in ImgFact, use:
+
+```python
+>>> relations = imgfact.load_relations()
+>>> entities = imgfact.load_entities()
+```
+
+The ImgFact api supports different image browsing method, you can retrieve image by the triplet that it embodies. There are three methods to access images:
+
+```python
+# Retrieve images by entity
+imgs = get_entity_img(head_entity="Ent1", tail_entity="Ent2")
+
+# Retrieve images by relation
+imgs = get_relation_img(relation="relation1")
+
+# Retrieve images by triplet
+imgs = get_triplet_img(triplet="Ent1 relation Ent2")
+```
+
+
 ## Data Format
 
 Here we describe how ImgFact is stored and organized. The ImgFact dataset is split into 30 subsets and each subset is compressed into a `.zip` file named as `TriplelistXXX.zip` (XXX is the index ranging from 001 to 030) .

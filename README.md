@@ -29,16 +29,16 @@ For example, given a triplet fact (**David_Beckham**, **Spouse**, **Victoria_Bec
 
 Here we provide a release version of ImgFact. The dataset can be accessed by [GoogleDrive](https://drive.google.com/drive/folders/17MWnf1hQFuOLJ-8iIe0w7Culhy2DJBzE?usp=sharing).
 
-The triplets to path map file is [dict.json](https://github.com/kleinercubs/ImgFact/blob/main/dict.json).
+The triplets to path map file is [triplet_path_mapping.json](https://github.com/kleinercubs/ImgFact/blob/main/triplet_path_mapping.json).
 
 ## ImgFact API
 
 Here we provide a easy-to-use API to enable easy access of ImgFact data. You can use the api to explore ImgFact by:
 
 ```python
-from imgfact_api import ImgFactDataset
-dataset = ImgFactDataset()
-dataset.load_data(use_sample=True)
+>>> from imgfact_api import ImgFactDataset
+>>> dataset = ImgFactDataset(root_dir=".")
+>>> data = dataset.load_data()
 ```
 
 To list all the relations and entities in ImgFact, use:
@@ -52,13 +52,13 @@ The ImgFact api supports different image browsing method, you can retrieve image
 
 ```python
 # Retrieve images by entity
-imgs = get_entity_img(head_entity="Ent1", tail_entity="Ent2")
+>>> imgs = get_entity_img(head_entity="Ent1", tail_entity="Ent2")
 
 # Retrieve images by relation
-imgs = get_relation_img(relation="relation1")
+>>> imgs = get_relation_img(relation="relation1")
 
 # Retrieve images by triplet
-imgs = get_triplet_img(triplet="Ent1 relation Ent2")
+>>> imgs = get_triplet_img(triplet="Ent1 relation Ent2")
 ```
 
 

@@ -21,26 +21,37 @@ class ImgFactDataset():
     The Imgfact main class 
     '''
 
-    def __init__(self) -> None:
-        self.data = []
+    def __init__(self, root_dir) -> None:
         self.mapping = dict()
         self.image_mapping = dict()
+        self.entitylist = list()
+        self.relationlist = list()
 
-    def load_data(self, root_dir, use_sample=False):
-        '''
-        Load Imgfact image data
-        '''
-        
-        with open(os.path.join(root_dir, "dict.json"), "r", encoding="utf-8") as f:
+        print("Loading ImageFact data...")
+        with open(os.path.join(root_dir, "triplet_path_mapping.json"), "r", encoding="utf-8") as f:
             self.mapping = json.load(f)
         
+        entities = set()
+        relations = set()
         for triplet in self.mapping:
             triplet_path = os.path.join(root_dir, self.mapping[triplet])
             if not is.path.exists(triplet_path):
                 continue
             images = os.listdir(triplet_path)
             self.image_mapping[tuple(triplet.split(" "))] = [os.path.join(triplet_path, img) for img in images]
-                    
+            ent1, relation, ent2 = triplet.split(" ")
+            entities.add(ent1)
+            entities.add(ent2)
+            relations.add(relation)
+        self.entitylist = list(entities)
+        self.relationlist = list(relaitons)
+
+
+    def load_data(self, root_dir, use_sample=False):
+        '''
+        Load Imgfact image data
+        '''
+        
         if use_sample:
             data = 0
         return self.image_mapping
@@ -51,16 +62,14 @@ class ImgFactDataset():
         Load Imgfact entities
         '''
 
-        entitypath = ""
-        return load_data_line(entitypath)
+        return self.entitylist
 
     def load_relations(self):
         '''
         Load Imgfact relations
         '''
         
-        relationpath = ""
-        return load_data_line(relationpath)
+        return self.relationlist
 
     def get_entity_img(self, head_entity = None, tail_entity = None) -> list:
         '''

@@ -13,7 +13,7 @@ We presented our implementation of ImgFact's construction pipeline and the exper
   - [ImgFact API](#imgfact-api)
   - [Data Format](#data-format)
   - [Dataset Construction](#dataset-construction)
-  - [Dataset Evaluation and Application](#dataset-evaluation)
+  - [Dataset Evaluation and Application](#dataset-evaluation-and-application)
   - [License](#license)
 
 ## Overview
@@ -163,5 +163,5 @@ The specific task name follows the naming rules: `predict_{predict target}/{know
 
 [![](https://licensebuttons.net/l/by-nc/4.0/88x31.png)](https://creativecommons.org/licenses/by-nc/4.0/)
 
-This work is licensed under a [Creative Commons Attribution 4.0 International License](https://creativecommons.org/licenses/by-nc/4.0/)
+This work is licensed under a [Creative Commons Attribution-NonCommercial 4.0 International Public License](https://creativecommons.org/licenses/by-nc/4.0/)
 

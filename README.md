@@ -67,8 +67,15 @@ All the codes related to the dataset evaluation are in [evaluation](https://gith
 
 - Generate sub-task datasets by simply run script `generation.sh`.
 - Training and evaluation with different models on different sub-task:
-    `python vilt.py --dataset {TASK_NAME} --epochs 150 --lr 3e-5 --optimizer ranger`
-    `python multimodal_naive.py --dataset {TASK_NAME} --epochs 150 --lr 3e-5 --optimizer ranger`
+```
+python vilt.py --dataset {TASK_NAME} --epochs 150 --lr 3e-5 --optimizer ranger
+```bash
+
+On Bert+ResNet:
+```
+python multimodal_naive.py --dataset {TASK_NAME} --epochs 150 --lr 3e-5 --optimizer ranger
+```bash
+
 Note: If you want to perform the experiments by using only text information, use `python multimodal_naive.py --dataset {TASK_NAME} --epochs 150 --lr 3e-5 --optimizer ranger --modality text`.
 Default `TASK_NAME` includes `predict_s/spo`, `predict_s/p`, `predict_s/o`, `predict_s/messy`, `predict_p/spo`, `predict_p/s`, `predict_p/o`, `predict_p/messy`, `predict_o/spo`, `predict_o/s`, `predict_o/p` and `predict_o/messy`. The specific task name follows the naming rules: `predict_{predict target}/{known information}`. For examples, `predict_s/spo` means given the images containing all the information of the triplets and want the model to predict the missing head entity. 
 

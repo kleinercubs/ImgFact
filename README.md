@@ -20,9 +20,16 @@ We presented our implementation of ImgFact's construction pipeline and the exper
 
 <img src="imgs/motivation.jpg"/>
 
-ImgFact is a dataset constructed for a new task that we introduced: triplet fact grounding, which aims to collect images that embody entities and their relation. For example, given a triplet fact (**David_Beckham**, **Spouse**, **Victoria_Beckha**), we expect to find intimate images of **David_Beckham** and **Victoria_Beckha**, as shown in Fig.
 
-In ImgFact, we present a large amount of image-triplet pairs, where the images embody the two entites and the relation between them of the correlated triplet.
+In ImgFact, we aim at grounding triplet facts in KGs on images to construct a new MMKG, where these images reflect not only head and tail entities, but also their relations.
+
+For example, given a triplet fact (**David_Beckham**, **Spouse**, **Victoria_Beckha**), we expect to find intimate images of **David_Beckham** and **Victoria_Beckha**.
+
+## Download
+
+Here we provide a release version of ImgFact. The dataset can be accessed by [GoogleDrive](https://drive.google.com/drive/folders/17MWnf1hQFuOLJ-8iIe0w7Culhy2DJBzE?usp=sharing).
+
+The triplets to path map file is [dict.json](https://github.com/kleinercubs/ImgFact/blob/main/dict.json).
 
 ## Data Format
 
@@ -45,12 +52,6 @@ In each subset of ImgFact, The files are organized as follows:
 The name of the subdirectories, for example "realation1" or "relation2", in the triplelist root directory indicates the relation of the triplet that the images in it embody, and the name of the second-level subdirectories, like "Entity1 Entity2", is composed of two entity names splitted by a space meaning the two entities of the triplet that the images in it embody.
 
 For example, the image `Triplelist001/relation/head_ent tail_ent/1.jpg` means that the image embodies the triplet `head_ent relation tail_ent` in it.
-
-## Download
-
-Here we provide a release version of ImgFact. The dataset can be accessed by [GoogleDrive](https://drive.google.com/drive/folders/17MWnf1hQFuOLJ-8iIe0w7Culhy2DJBzE?usp=sharing).
-
-The dataset is splitted into 30 different `.zip` chunk files, each one is about 1GB large. Take `Triplelist001.zip` as an example, the images inside is named followed the rule `relation/head_entity tail_entity/idx.jpg`.
 
 ## Dataset Construction
 
@@ -94,8 +95,8 @@ Default `TASK_NAME` includes `predict_s/spo`, `predict_s/p`, `predict_s/o`, `pre
 
 ## License
 
-[![](https://i.creativecommons.org/l/by/4.0/88x31.png)](http://creativecommons.org/licenses/by/4.0/)
+[![](https://licensebuttons.net/l/by-nc/4.0/88x31.png)](https://creativecommons.org/licenses/by-nc/4.0/)
 
-This work is licensed under a [Creative Commons Attribution 4.0 International License](http://creativecommons.org/licenses/by/4.0/)
+This work is licensed under a [Creative Commons Attribution 4.0 International License](https://creativecommons.org/licenses/by-nc/4.0/)
 
 ## Citation

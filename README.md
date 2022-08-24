@@ -31,6 +31,16 @@ Here we provide a release version of ImgFact. The dataset can be accessed by [Go
 
 The triplets to path map file is [dict.json](https://github.com/kleinercubs/ImgFact/blob/main/dict.json).
 
+## ImgFact API
+
+Here we provide a easy-to-use API to enable easy access of ImgFact data. You can use the api to explore ImgFact by:
+
+```python
+from imgfact_api import ImgFactDataset
+dataset = ImgFactDataset()
+dataset.load_data(use_sample=True)
+```
+
 ## Data Format
 
 Here we describe how ImgFact is stored and organized. The ImgFact dataset is split into 30 subsets and each subset is compressed into a `.zip` file named as `TriplelistXXX.zip` (XXX is the index ranging from 001 to 030) .

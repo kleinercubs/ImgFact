@@ -67,12 +67,43 @@ For example, the image `Triplelist001/relation/head_ent tail_ent/1.jpg` means th
 
 All the codes related to the dataset construction pipeline are in [data_construction](https://github.com/kleinercubs/ImgFact/tree/main/dataset_construction). The construction pipeline should run by the following order:
 
-- Entity Filtering: Run `inference.py` to filter entities with a trained classifier.
-- Relation Filtering: First run `filter_tuples.py` , then run `gen_sample_tuples.py`, after that run `gen_candidate_relations.py`, and finally run `gen_visual_relations.py` and apply pre-defined thresholds to get the result.
-- Entity-based Image Filtering: Run `ptuningfilter.py` and `ptuningfilter_ent.py` respectively and aggregate the results by getting their intersection as the filter result.
+- Entity Filtering: Filter entities with a trained classifier.
+
+```
+python inference.py
+```
+
+- Relation Filtering: Run following commands in order and apply pre-defined thresholds to get the result.
+
+```
+python filter_tuples.py
+python gen_sample_tuples.py
+python gen_candidate_relations.py
+python gen_visual_relations.py
+```
+
+- Entity-based Image Filtering: Run following codes respectively and aggregate the results by getting their intersection as the filter result.
+
+```
+python ptuningfilter.py
+python ptuningfilter_ent.py
+```
+
 - Image Collection: Apply any toolbox that can collect images from search engines.
-- Relation-based Image Filtering: Run `CPgen.py --do_train` for training stage, and `CPgen.py --do_predict --file {XXX}` for inference stage. Note that `XXX` denotes the 3 digit file id, starts with leading zero, e.g. 001.
-- Clustering: Run `cluster.py` to get the final clustering result.
+- Relation-based Image Filtering: Run following codes for training and inference.
+
+```
+python CPgen.py --do_train
+python CPgen.py --do_predict --file {XXX}
+```
+
+Note: `XXX` denotes the 3 digit file id, starts with leading zero, e.g. `001`.
+
+- Clustering: Get the final clustering result.
+
+```
+python cluster.py
+```
 
 Our implementation of the pipeline can be found here, in which all the steps except image collection is included in this repo. For image collection, we refer to this [repo]() for reference.
 
@@ -109,4 +140,3 @@ Default `TASK_NAME` includes `predict_s/spo`, `predict_s/p`, `predict_s/o`, `pre
 
 This work is licensed under a [Creative Commons Attribution 4.0 International License](https://creativecommons.org/licenses/by-nc/4.0/)
 
-## Citation

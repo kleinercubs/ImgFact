@@ -86,7 +86,9 @@ For example, the image `Triplelist001/relation/head_ent tail_ent/1.jpg` means th
 
 ## Dataset Construction
 
-All the codes related to the dataset construction pipeline are in [data_construction](https://github.com/kleinercubs/ImgFact/tree/main/dataset_construction). The construction pipeline should run by the following order:
+All the codes related to the dataset construction pipeline are in [data_construction](https://github.com/kleinercubs/ImgFact/tree/main/dataset_construction). 
+Our implementation of the pipeline can be found here, in which all the steps except image collection is included in this repo. For image collection, we refer to this [AutoCrawler](https://github.com/YoongiKim/AutoCrawler) for reference.
+ The construction pipeline should run by the following order:
 
 - Entity Filtering: Filter entities with a trained classifier.
 
@@ -125,8 +127,6 @@ Note: `XXX` denotes the 3 digit file id, starts with leading zero, e.g. `001`.
 ```
 python cluster.py
 ```
-
-Our implementation of the pipeline can be found here, in which all the steps except image collection is included in this repo. For image collection, we refer to this [repo]() for reference.
 
 ## Dataset Evaluation
 

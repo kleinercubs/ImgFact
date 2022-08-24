@@ -9,12 +9,12 @@ We presented our implementation of ImgFact's construction pipeline and the exper
 - [ImgFact](#imgfact)
   - [Contents](#contents)
   - [Overview](#overview)
-  - [Data Format](#data-format)
   - [Download](#download)
+  - [ImgFact API](#imgfact-api)
+  - [Data Format](#data-format)
   - [Dataset Construction](#dataset-construction)
   - [Dataset Evaluation](#dataset-evaluation)
   - [License](#license)
-  - [Citation](#citation)
 
 ## Overview
 

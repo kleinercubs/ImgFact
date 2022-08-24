@@ -1,3 +1,6 @@
+import os
+import json
+
 def load_data_line(path:str) -> list:
     '''
     load data inline
@@ -15,20 +18,32 @@ def load_data_line(path:str) -> list:
 
 class ImgFactDataset():
     '''
-    The Imgfact main class
+    The Imgfact main class 
     '''
 
     def __init__(self) -> None:
         self.data = []
+        self.mapping = dict()
+        self.image_mapping = dict()
 
-    def load_data(self, use_sample=False):
+    def load_data(self, root_dir, use_sample=False):
         '''
         Load Imgfact image data
         '''
-
+        
+        with open(os.path.join(root_dir, "dict.json"), "r", encoding="utf-8") as f:
+            self.mapping = json.load(f)
+        
+        for triplet in self.mapping:
+            triplet_path = os.path.join(root_dir, self.mapping[triplet])
+            if not is.path.exists(triplet_path):
+                continue
+            images = os.listdir(triplet_path)
+            self.image_mapping[tuple(triplet.split(" "))] = [os.path.join(triplet_path, img) for img in images]
+                    
         if use_sample:
             data = 0
-        return
+        return self.image_mapping
 
 
     def load_entities(self):
@@ -56,18 +71,36 @@ class ImgFactDataset():
             print("Please specify the head entity or tail entity to filter images")
             return
         
-        return
+        entity_data = []
+        for triplet in self.image_mapping:
+            if triplet[0] != head_entity and head_entity is not None:
+                continue
+            if triplet[2] != tail_entity and tail_entity is not None:
+                continue
+            entity_data.append((triplet, self.image_mapping[triplet]))
+        return entity_data
 
     def get_relation_img(self, relation):
         '''
         Get the images that embody the input relation
         '''
+        relation_data = []
+        for triplet in self.image_mapping:
+            if triplet[1] != relation:
+                continue
+            relation_data.append((triplet, self.image_mapping[triplet]))
         
-        return
+        return relation_data
 
     def get_triplet_img(self, triplet:tuple):
         '''
         Get the images that embody the input triplet
         '''
         
-        return
+        triplet_data = []
+        for triplet in self.image_mapping:
+            if triplet != triplet:
+                continue
+            triplet_data.append((triplet, self.image_mapping[triplet]))
+        
+        return triplet_data

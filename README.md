@@ -31,6 +31,8 @@ Here we provide a release version of ImgFact. The full dataset including all the
 
 The triplets to path map file is [triplet_path_mapping.json](https://github.com/kleinercubs/ImgFact/blob/main/triplet_path_mapping.json).
 
+The titles of each image can be accessed by [GoogleDrive](https://drive.google.com/drive/u/0/folders/1ovmay5iSAIJcZOtSYEv6-WAeIfFoEmXo), each file contains all the images and triplets under that relationship.
+
 ## ImgFact API
 
  Here we provide a easy-to-use API to enable easy access of ImgFact data. Before using the ImgFact api, you should download both the dataset and the `triplet_path_mapping.json` into one directory. You can use the api to explore ImgFact by:

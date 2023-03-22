@@ -27,7 +27,7 @@ For example, given a triplet fact (**David_Beckham**, **Spouse**, **Victoria_Bec
 
 ## Download
 
-Here we provide a release version of ImgFact. The full dataset including all the images and the corresponding triplets can be accessed by [GoogleDrive](https://drive.google.com/drive/folders/17MWnf1hQFuOLJ-8iIe0w7Culhy2DJBzE?usp=sharing).
+Due to Github’s limitations on large-scale data uploads, we have created a temporary Google Drive [GoogleDrive](https://drive.google.com/drive/folders/1G_QKlKSboI10ATW82Pp-1BqULxd-3TiC) with the username `imgfact2023@gmail.com` exclusively for storing our ImgFact data. We assure you that this link does not compromise any personal information. 
 
 The triplets to path map file is [triplet_path_mapping.json](https://github.com/kleinercubs/ImgFact/blob/main/triplet_path_mapping.json).
 

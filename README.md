@@ -30,7 +30,7 @@ Due to Github’s limitations on large-scale data uploads, we have created a tem
 
 The triplets to path map file is [triplet_path_mapping.json](https://github.com/kleinercubs/ImgFact/blob/main/triplet_path_mapping.json).
 
-The titles of each image can be accessed by [GoogleDrive](https://drive.google.com/drive/u/0/folders/1ovmay5iSAIJcZOtSYEv6-WAeIfFoEmXo), each file contains all the images and triplets under that relationship.
+The titles of each image can be accessed by [GoogleDrive](https://drive.google.com/drive/folders/1ey-SnyxaENFPXYVVgy8riX-XfSOQoWXv?usp=share_link), each file contains all the images and triplets under that relationship.
 
 ## ImgFact API
 

@@ -38,8 +38,9 @@ The titles of each image can be accessed by [GoogleDrive](https://drive.google.c
 
 ```python
 >>> from imgfact_api import ImgFactDataset
->>> dataset = ImgFactDataset(root_dir=".")
->>> data = dataset.load_data()
+>>> dataset = ImgFactDataset(root_dir="imgfact") #The path where the imgfact data is located
+Loading ImageFact data...
+Total Triplets:247732 Loaded Triplets:247732
 ```
 
 To list all the relations and entities in ImgFact, use:
@@ -53,13 +54,13 @@ The ImgFact api supports different image browsing method, you can retrieve image
 
 ```python
 # Retrieve images by entity
->>> imgs = get_entity_img(head_entity="Ent1", tail_entity="Ent2")
+>>> imgs = retrieve_img_from_entity(head_entity="Ent1", tail_entity="Ent2")
 
 # Retrieve images by relation
->>> imgs = get_relation_img(relation="relation1")
+>>> imgs = retrieve_img_from_relation(relation="relation1")
 
 # Retrieve images by triplet
->>> imgs = get_triplet_img(triplet="Ent1 relation Ent2")
+>>> imgs = retrieve_img_from_triplet(triplet=(Ent1, relation, Ent2))
 ```
 
 ## Data Format

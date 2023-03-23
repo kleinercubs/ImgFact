@@ -18,8 +18,7 @@ We presented our implementation of ImgFact's construction pipeline and the exper
 
 ## Overview
 
-<img src="imgs/motivation.jpg"/>
-
+<img src="imgs/motivation.png"/>
 
 In ImgFact, we aim at grounding triplet facts in KGs on images to construct a new MMKG, where these images reflect not only head and tail entities, but also their relations.
 
@@ -27,7 +26,7 @@ For example, given a triplet fact (**David_Beckham**, **Spouse**, **Victoria_Bec
 
 ## Download
 
-Due to Github’s limitations on large-scale data uploads, we have created a temporary Google Drive [GoogleDrive](https://drive.google.com/drive/folders/1G_QKlKSboI10ATW82Pp-1BqULxd-3TiC) with the username `imgfact2023@gmail.com` exclusively for storing our ImgFact data. We assure you that this link does not compromise any personal information. 
+Due to Github’s limitations on large-scale data uploads, we have created a temporary Google Drive [GoogleDrive](https://drive.google.com/drive/folders/1G_QKlKSboI10ATW82Pp-1BqULxd-3TiC) with the username `imgfact2023@gmail.com` exclusively for storing our ImgFact data. We assure you that this link does not compromise any personal information.
 
 The triplets to path map file is [triplet_path_mapping.json](https://github.com/kleinercubs/ImgFact/blob/main/triplet_path_mapping.json).
 
@@ -63,7 +62,6 @@ The ImgFact api supports different image browsing method, you can retrieve image
 >>> imgs = get_triplet_img(triplet="Ent1 relation Ent2")
 ```
 
-
 ## Data Format
 
 Here we describe how ImgFact is stored and organized. The ImgFact dataset is split into 30 subsets and each subset is compressed into a `.zip` file named as `TriplelistXXX.zip` (XXX is the index ranging from 001 to 030) .
@@ -88,7 +86,7 @@ For example, the image `Triplelist001/relation/head_ent tail_ent/1.jpg` means th
 
 ## Dataset Construction
 
-All the codes related to the dataset construction pipeline are in [data_construction](https://github.com/kleinercubs/ImgFact/tree/main/dataset_construction). 
+All the codes related to the dataset construction pipeline are in [data_construction](https://github.com/kleinercubs/ImgFact/tree/main/dataset_construction).
 Our implementation of the pipeline can be found here, in which all the steps except image collection is included in this repo. For image collection, we refer to this [AutoCrawler](https://github.com/YoongiKim/AutoCrawler) for reference.
  The construction pipeline should run by the following order:
 
@@ -157,13 +155,12 @@ Note: If you want to perform the experiments by using only text information, use
 python multimodal_naive.py --dataset {TASK_NAME} --epochs 150 --lr 3e-5 --optimizer ranger --modality text
 ```
 
-Default `TASK_NAME` includes `predict_s/spo`, `predict_s/p`, `predict_s/o`, `predict_s/messy`, `predict_p/spo`, `predict_p/s`, `predict_p/o`, `predict_p/messy`, `predict_o/spo`, `predict_o/s`, `predict_o/p` and `predict_o/messy`. 
+Default `TASK_NAME` includes `predict_s/spo`, `predict_s/p`, `predict_s/o`, `predict_s/messy`, `predict_p/spo`, `predict_p/s`, `predict_p/o`, `predict_p/messy`, `predict_o/spo`, `predict_o/s`, `predict_o/p` and `predict_o/messy`.
 
-The specific task name follows the naming rules: `predict_{predict target}/{known information}`. For examples, `predict_s/spo` means given the images containing all the information of the triplets and want the model to predict the missing head entity. 
+The specific task name follows the naming rules: `predict_{predict target}/{known information}`. For examples, `predict_s/spo` means given the images containing all the information of the triplets and want the model to predict the missing head entity.
 
 ## License
 
 [![](https://licensebuttons.net/l/by-nc/4.0/88x31.png)](https://creativecommons.org/licenses/by-nc/4.0/)
 
 This work is licensed under a [Creative Commons Attribution-NonCommercial 4.0 International Public License](https://creativecommons.org/licenses/by-nc/4.0/).
-

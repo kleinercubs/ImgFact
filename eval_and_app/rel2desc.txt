@@ -1,0 +1,142 @@
+fourthCommander		{}'s fourth commander is {}.
+maidenFlightRocket		{}'s maiden flight rocket is {}.
+distributingLabel		{}'s distributing label is {}.
+launchVehicle		{}'s launch vehicle is {}.
+colour		{}'s colour is {}.
+previousEditor		{}'s previous editor is {}.
+leader		{}'s leader is {}.
+sport		{}'s sport is {}.
+coach		{}'s coach is {}.
+narrator		{}'s narrator is {}.
+mother		{}'s mother is {}.
+domain		{}'s domain is {}.
+recordLabel		{}'s record label is {}.
+distributingCompany		{}'s distributing company is {}.
+childOrganisation		{}'s child organisation is {}.
+commandStructure		{}'s command structure is {}.
+formerPartner		{}'s former partner is {}.
+formerTeam		{}'s former team is {}.
+formerChoreographer		{}'s former choreographer is {}.
+jockey		{}'s jockey is {}.
+founder		{}'s founder is {}.
+dam		{}'s dam is {}.
+sire		{}'s sire is {}.
+endingTheme		{}'s ending theme is {}.
+parent		{}'s parent is {}.
+grandsire		{}'s grandsire is {}.
+gender		{}'s gender is {}.
+influenced		{} has influenced {}.
+stylisticOrigin		{}'s stylistic origin is {}.
+engineType		{}'s engine type is {}.
+aircraftRecon		{}'s aircraft recon is {}.
+mission		{}'s mission is {}.
+lastRace		{}'s last race is {}.
+musicType		{}'s music type is {}.
+thirdCommander		{}'s third commander is {}.
+subject		{}'s subject is {}.
+trainer		{}'s trainer is {}.
+creatorOfDish		{}'s creator of dish is {}.
+team		{}'s team is {}.
+instrument		{}'s instrument is {}.
+aircraftAttack		{}'s aircraft attack is {}.
+aircraftTransport		{}'s aircraft transport is {}.
+cpu		{}'s cpu is {}.
+retiredRocket		{}'s retired rocket is {}.
+owningCompany		{}'s owning company is {}.
+draftTeam		{}'s draft team is {}.
+comparable		{}'s comparable is {}.
+currentPartner		{}'s current partner is {}.
+genre		{}'s genre is {}.
+patron		{}'s patron is {}.
+child		{}'s child is {}.
+previousMission		{}'s previous mission is {}.
+stateOfOrigin		{}'s state of origin is {}.
+agency		{}'s agency is {}.
+championInDoubleFemale		{}'s champion in double female is {}.
+aircraftPatrol		{}'s aircraft patrol is {}.
+blockAlloy		{}'s block alloy is {}.
+aircraftTrainer		{}'s aircraft trainer is {}.
+depiction		{}'s depiction is {}.
+championInSingleFemale		{}'s champion in single female is {}.
+manufacturer		{}'s manufacturer is {}.
+ingredient		{}'s ingredient is {}.
+presenter		{}'s presenter is {}.
+debutTeam		{}'s debut team is {}.
+aircraftHelicopterUtility		{}'s aircraft helicopter utility is {}.
+choreographer		{}'s choreographer is {}.
+automobilePlatform		{}'s automobile platform is {}.
+medicalCause		{}'s medical cause is {}.
+alliance		{}'s alliance is {}.
+aircraftBomber		{}'s aircraft bomber is {}.
+executiveProducer		{}'s executive producer is {}.
+youthWing		{}'s youth wing is {}.
+aircraftElectronic		{}'s aircraft electronic is {}.
+firstRace		{}'s first race is {}.
+aircraftFighter		{}'s aircraft fighter is {}.
+coolingSystem		{}'s cooling system is {}.
+bodyStyle		{}'s body style is {}.
+associatedMusicalArtist		{}'s associated musical artist is {}.
+aircraftHelicopter		{}'s aircraft helicopter is {}.
+nextMission		{}'s next mission is {}.
+keyPerson		{}'s key person is {}.
+equipment		{}'s equipment is {}.
+relatedMeanOfTransportation		{}'s related mean of transportation is {}.
+vehiclesInFleet		{}'s vehicles in fleet is {}.
+movement		{}'s movement is {}.
+foundedBy		{} is founded by {}.
+differentialDiagnosis		{}'s differential diagnosis is {}.
+field		{}'s field is {}.
+champion		{}'s champion is {}.
+fuelType		{}'s fuel type is {}.
+nerve		{}'s nerve is {}.
+derivative		{}'s derivative is {}.
+nextEvent		{}'s next event is {}.
+vein		{}'s vein is {}.
+product		{}'s product is {}.
+employer		{}'s employer is {}.
+voice		{}'s voice is {}.
+industry		{}'s industry is {}.
+headAlloy		{}'s head alloy is {}.
+showJudge		{}'s show judge is {}.
+championInMixedDouble		{}'s champion in mixed double is {}.
+owl#differentFrom		{}'s different from {}.
+parentCompany		{}'s parent company is {}.
+musicSubgenre		{}'s music subgenre is {}.
+spouse		{}'s spouse is {}.
+damsire		{}'s damsire is {}.
+knownFor		{}'s known for is {}.
+hybrid		{}'s hybrid is {}.
+isPartOfAnatomicalStructure		{} is part of anatomical structure {}.
+father		{}'s father is {}.
+vehicle		{}'s vehicle is {}.
+associatedBand		{}'s associated band is {}.
+species		{}'s species is {}.
+designer		{}'s designer is {}.
+portrayer		{}'s portrayer is {}.
+symptom		{}'s symptom is {}.
+artery		{}'s artery is {}.
+fuelSystem		{}'s fuel system is {}.
+championInSingleMale		{}'s champion in single male is {}.
+rocketFunction		{}'s rocket function is {}.
+formerBandMember		{}'s former band member is {}.
+occupation		{}'s occupation is {}.
+spacecraft		{}'s spacecraft is {}.
+raceHorse		{}'s race horse is {}.
+college		{}'s college is {}.
+artist		{}'s artist is {}.
+sportGoverningBody		{}'s sport governing body is {}.
+battery		{}'s battery is {}.
+prospectTeam		{}'s prospect team is {}.
+canonizedBy		{}'s canonized by is {}.
+channel		{}'s channel is {}.
+bandMember		{}'s band member is {}.
+subsidiary		{}'s subsidiary is {}.
+creator		{}'s creator is {}.
+relative		{}'s relative is {}.
+crewMember		{}'s crew member is {}.
+secondCommander		{}'s second commander is {}.
+parentOrganisation		{}'s parent organisation is {}.
+musicFusionGenre		{}'s music fusion genre is {}.
+hasVariant		{}'s has variant is {}.
+designCompany		{}'s design company is {}.
+partner		{}'s partner is {}.

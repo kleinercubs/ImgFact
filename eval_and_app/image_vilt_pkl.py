@@ -34,7 +34,7 @@ for subset in ['data']:
             if not os.path.exists(fp):
                 fp = os.path.join('images_118', rel, so, idx)
             imgdic.update({os.path.join(rel, so, idx): 
-                        Image.open(fp).resize((640, 480), Image.ANTIALIAS).convert("RGB")})py
+                        Image.open(fp).resize((640, 480), Image.ANTIALIAS).convert("RGB")})
 
 with open('image_vilt.pkl', 'wb') as f:
     pickle.dump(imgdic, f)

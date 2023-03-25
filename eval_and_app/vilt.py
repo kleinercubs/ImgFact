@@ -70,7 +70,10 @@ class Resnet(nn.Module):
 class MyModel(nn.Module):
     def __init__(self, class_num):
         super(MyModel, self).__init__()
-        self.classifier = nn.Linear(768, class_num)
+        if 'enhance' in args.dataset:
+            self.classifier = nn.Linear(768*2, class_num)
+        else:
+            self.classifier = nn.Linear(768, class_num)
         self.class_num = class_num
         self.mm = ViltModel.from_pretrained("dandelin/vilt-b32-mlm").to(device)
         self.mm.eval()
@@ -183,7 +186,7 @@ def validate(model, loader, infer=False):
                 if infer == True:
                     y_true.append(int(label))
                     y_pred.append(int(pred[0]))
-                    f.writelines('{}\t{}\t{}\t{}\n'.format(_s,_p,_o,rank))
+                    f.writelines('{}\t{}\t{}\t{}\t{}\t{}\n'.format(_s,_p,_o,rank,pred[0],label))
                 tot += 1
             tk.set_description("LP {} hit@1:{:.6f}   hit@5:{:.6f}   mrr:{:.6f}   mr:{:.6f}".format(
                 args.dataset,
@@ -201,9 +204,9 @@ def validate(model, loader, infer=False):
             acc5/tot,
             mrr/tot,
             mr/tot,
-            f1_score(y_true,y_pred,average="macro",zero_division=0),
-            recall_score(y_true,y_pred,average="macro",zero_division=0),
-            precision_score(y_true,y_pred,average="macro",zero_division=0),
+            f1_score(y_true,y_pred,average="weighted",zero_division=0),
+            recall_score(y_true,y_pred,average="weighted",zero_division=0),
+            precision_score(y_true,y_pred,average="weighted",zero_division=0),
         ))
     cnt = acc1
     return cnt

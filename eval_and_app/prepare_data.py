@@ -26,7 +26,7 @@ with open('rel2desc.txt') as f:
         
 label = {}
 label_cnt = 0
-with open('data_v0419.source') as f:
+with open('data.source') as f:
     for line in f:
         line = line.strip()
         s, p, o = line.replace('_', ' ').split('\t')
@@ -42,14 +42,14 @@ json.dump(label, open('data/{}/targets.json'.format(args.file[:9]), 'w'), indent
 head_entity, tail_entity = set(), set()
 for subset in ["train", "dev", "test"]:
     triples = []
-    with open('{}_v0419.source'.format(subset)) as f:
+    with open('{}.source'.format(subset)) as f:
         for line in f:
             line = line.strip()
             s, p, o = line.replace('_', ' ').split('\t')
             triples.append((s, p, o))
 
     img_path = []
-    with open('{}_v0419.{}'.format(subset, args.type)) as f:
+    with open('{}.{}'.format(subset, args.type)) as f:
         for line in f:
             line = line.strip()
             line = '/'.join(line.split('/')[-3:])

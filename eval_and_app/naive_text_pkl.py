@@ -22,7 +22,7 @@ tokenizer = AutoTokenizer.from_pretrained('bert-base-uncased', do_lower_case=Tru
 res = []
 imgdic = dict()
 for subset in ['data']:
-    with open("{}_v0419.source".format(subset), 'r', encoding = 'utf-8') as f:
+    with open("{}.source".format(subset), 'r', encoding = 'utf-8') as f:
         for line in tqdm(f.readlines()):
             line = line.strip()
             

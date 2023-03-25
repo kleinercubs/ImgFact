@@ -135,25 +135,26 @@ All the codes related to the dataset evaluation and application are in [eval_and
 
 The evaluation and application are similar. The only difference is the information the model received.
 
-- Generate sub-task datasets by simply run script `generation.sh`.
+- Download the general task datasets from [Google Drive](https://drive.google.com/drive/folders/1Qaz7sbjo45JXD408QrJceXNIwV8UBDDy?usp=share_link) and unzip it at `eval_and_app` directory.
+- Generate sub-task datasets by simply run script `generate.sh`.
 - Training and evaluation with different models on different sub-task:
 
 On ViLT:
 
 ```
-python vilt.py --dataset {TASK_NAME} --epochs 150 --lr 3e-5 --optimizer ranger
+python vilt.py --dataset {TASK_NAME} --epochs 150 --lr 1e-4 --optimizer adamw
 ```
 
 On BERT+ResNet:
 
 ```
-python multimodal_naive.py --dataset {TASK_NAME} --epochs 150 --lr 3e-5 --optimizer ranger
+python multimodal_naive.py --dataset {TASK_NAME} --epochs 150 --lr 1e-4 --optimizer adamw
 ```
 
 Note: If you want to perform the experiments by using only text information, use:
 
 ```
-python multimodal_naive.py --dataset {TASK_NAME} --epochs 150 --lr 3e-5 --optimizer ranger --modality text
+python multimodal_naive.py --dataset {TASK_NAME} --epochs 150 --lr 1e-4 --optimizer adamw --modality text
 ```
 
 Default `TASK_NAME` includes `predict_s/spo`, `predict_s/p`, `predict_s/o`, `predict_s/messy`, `predict_p/spo`, `predict_p/s`, `predict_p/o`, `predict_p/messy`, `predict_o/spo`, `predict_o/s`, `predict_o/p` and `predict_o/messy`.

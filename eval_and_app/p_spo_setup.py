@@ -33,7 +33,7 @@ with open('rel2desc.txt') as f:
         rel, template, label = line.split('\t')
         rel2desc[rel] = (template, label)
 
-with open('data_v0419.source') as f:
+with open('data.source') as f:
     for line in f:
         line = line.strip()
         s, p, o = line.split('\t')
@@ -50,7 +50,7 @@ json.dump(rel2id, open('rel2id.json', 'w'))
 for subset in ['train', 'dev', 'test']:
     triples = []
     rel_counter = {}
-    with open('{}_v0419.source'.format(subset)) as f:
+    with open('{}.source'.format(subset)) as f:
         for line in f:
             line = line.strip()
             s, p, o = line.split('\t')
@@ -68,7 +68,7 @@ for subset in ['train', 'dev', 'test']:
     print(len(set(triples)))
 
     img_path = []
-    with open('{}_v0419.prefix'.format(subset)) as f:
+    with open('{}.prefix'.format(subset)) as f:
         for line in f:
             line = line.strip()
             if line.split('/')[-3] not in rel2id.keys():

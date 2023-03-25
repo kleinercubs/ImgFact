@@ -54,7 +54,10 @@ class CustomDataset(Dataset):
 
     def __getitem__(self, index):
         sentence, s, p, o, label, path = self.data[index]
-        image = torch.tensor(list(image_dict[path]))
+        if 'enhance' in args.dataset:
+            image = torch.cat([torch.tensor(list(image_dict[path][0])), torch.tensor(list(image_dict[path][1]))])
+        else:
+            image = torch.tensor(list(image_dict[path]))
         return [image, sentence, f'{s}/{p}/{o}']
 
 
@@ -79,7 +82,11 @@ def calculate(pure_bert, resnet, loader, infer=False):
 
     
 if __name__ == '__main__':
-    with open('image_naive.pkl'.format(args.dataset), 'rb') as f:
+    if 'enhance' in args.dataset:
+        image_pkl_file = 'image_naive_enhance.pkl'
+    else:
+        image_pkl_file = 'image_naive.pkl'
+    with open(image_pkl_file, 'rb') as f:
         image_dict = pickle.load(f)
         
     with open('data/{}/train.pkl'.format(args.dataset), 'rb') as f:

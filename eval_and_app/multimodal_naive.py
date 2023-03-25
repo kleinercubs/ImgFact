@@ -38,7 +38,8 @@ parser.add_argument('--device', type=str, default='0')
 
 args = parser.parse_args()
 
-device = torch.device('cuda:{}'.format(args.device) if torch.cuda.is_available() else 'cpu')    
+device = torch.device('cuda:{}'.format(args.device)
+                      if torch.cuda.is_available() else 'cpu')
 
 def seed_everything(seed):
     random.seed(seed)
@@ -72,7 +73,10 @@ class Resnet(nn.Module):
 class MyModel(nn.Module):
     def __init__(self, resnet, bert, tokenizer, class_num):
         super(MyModel, self).__init__()
-        self.converter = nn.Linear(2048, args.img_token_num * 768)  # TODO
+        if 'enhance' in args.dataset:
+            self.converter = nn.Linear(4096, args.img_token_num * 768)  # TODO
+        else:
+            self.converter = nn.Linear(2048, args.img_token_num * 768)  # TODO
         if args.modality == "naive":
             self.classifier = nn.Linear(768*(args.img_token_num+1), class_num)
         else:
@@ -101,7 +105,7 @@ class MyModel(nn.Module):
             return torch.rand(2048).to(device)
     
     def forward(self, x):
-        b_text, b_s, b_p, b_o, b_labels, b_img = x #b_o is truth label
+        b_text, b_s, b_p, b_o, b_labels, b_img = x # b_o is truth label
         if args.modality == "naive":
             img_features = torch.stack(list(b_img), dim=0).to(device)
             text_emb = torch.stack(list(b_text), dim=0).to(device)
@@ -112,11 +116,13 @@ class MyModel(nn.Module):
             text_emb = torch.stack(list(b_text), dim=0).to(device)
             inputs_embeds = torch.cat([text_emb], dim=1)
         cls_output = self.classifier(inputs_embeds)
-        y = tokenizer(list(b_o), max_length=args.max_in_len-args.img_token_num, padding='max_length', truncation=True, return_tensors='pt').to(device)
+        y = tokenizer(list(b_o), max_length=args.max_in_len-args.img_token_num,
+                      padding='max_length', truncation=True, return_tensors='pt').to(device)
 
         labels = b_labels
         b_labels = torch.tensor(b_labels).unsqueeze(-1).to(device)
-        one_hot_label = torch.zeros(b_labels.shape[0], class_num).to(device).scatter_(1, b_labels, 1)
+        one_hot_label = torch.zeros(b_labels.shape[0], class_num).to(
+            device).scatter_(1, b_labels, 1)
 
         return cls_output, torch.tensor(labels), one_hot_label.to(device), b_s, b_p, b_o
 
@@ -143,6 +149,7 @@ class CustomDataset(Dataset):
                     self.data.append(d)
         if "random" in args.dataset:
             self.noise = torch.rand((len(data),  2048))
+    
     def __len__(self):
         return len(self.data)
 
@@ -205,14 +212,14 @@ def validate(epoch, model, loader):
     with torch.no_grad():
         for _, data in enumerate(tk):
             logits, label, onehot_label, b_s, b_p, b_o = model(data)
-            pred = torch.argsort(logits,descending=True)
+            pred = torch.argsort(logits, descending=True)
             for pred, label in zip(pred.cpu(), label.cpu()):
                 if label == pred[0]:
-                    acc1 +=1
+                    acc1 += 1
                 if label in pred[:10]:
-                    acc5 += 1   
+                    acc5 += 1
                 mat = torch.tensor([label]*class_num)
-                rank = torch.nonzero(mat==pred)[0][0]+1
+                rank = torch.nonzero(mat == pred)[0][0]+1
                 mrr += 1/rank
                 mr += rank
                 tot += 1
@@ -232,14 +239,15 @@ def inference(epoch, model, loader):
     cnt, acc1, acc5, mr, mrr, tot = 0, 0, 0, 0, 0, 0
     y_pred, y_true = [], []
     tk = tqdm(loader, total=len(loader), position=0, leave=True)
-    f = open("output_dir/{}_{}_{}_{}_result.txt".format(args.dataset, args.modality, args.optimizer, args.lr), "w")
+    f = open("output_dir/{}_{}_{}_{}_result.txt".format(args.dataset,
+             args.modality, args.optimizer, args.lr), "w")
     with torch.no_grad():
         for _, data in enumerate(tk):
             logits, label, onehot_label, b_s, b_p, b_o = model(data)
-            pred = torch.argsort(logits,descending=True)
+            pred = torch.argsort(logits, descending=True)
             for pred, label, _s, _p, _o in zip(pred.cpu(), label.cpu(), b_s, b_p, b_o):
                 if label == pred[0]:
-                    acc1 +=1
+                    acc1 += 1
                 if label in pred[:10]:
                     acc5 += 1   
                 mat = torch.tensor([label]*class_num)
@@ -265,9 +273,9 @@ def inference(epoch, model, loader):
         acc5/tot,
         mrr/tot,
         mr/tot,
-        f1_score(y_true,y_pred,average="macro",zero_division=0),
-        recall_score(y_true,y_pred,average="macro",zero_division=0),
-        precision_score(y_true,y_pred,average="macro",zero_division=0),
+        f1_score(y_true, y_pred, average="weighted", zero_division=0),
+        recall_score(y_true, y_pred, average="weighted", zero_division=0),
+        precision_score(y_true, y_pred, average="weighted", zero_division=0),
     ))
     return acc1/tot, acc5/tot, mrr/tot, mr/tot
 
@@ -311,7 +319,7 @@ if __name__ == '__main__':
         parameter.requires_grad = False
 
     tokenizer = AutoTokenizer.from_pretrained(args.model, do_lower_case=True)
-    bert =  AutoModelForMaskedLM.from_pretrained(args.model)
+    bert = AutoModelForMaskedLM.from_pretrained(args.model)
     pure_bert = BertModel.from_pretrained(args.model).to(device)
     bert.eval()
     pure_bert.eval()
@@ -327,14 +335,15 @@ if __name__ == '__main__':
         print(target_data.shape)
         class_num = target_data.shape[0]
 
-    model = MyModel(resnet, bert, tokenizer, class_num = class_num).to(device)
-    
+    model = MyModel(resnet, bert, tokenizer, class_num=class_num).to(device)
+
     if args.optimizer == 'adamw':
         optimizer = AdamW(model.parameters(), lr=args.lr)
     elif args.optimizer == 'ranger':
         optimizer = Ranger(model.parameters(), lr=args.lr)
 
     checkpoint_path = f"output_dir/{args.dataset}_{args.modality}_{args.optimizer}_{args.lr}_classifier.pt"
+    converter_checkpoint_path = f"output_dir/{args.dataset}_{args.modality}_{args.optimizer}_{args.lr}_converter.pt"
     best_score = 0
     for epoch in range(args.epochs):
         train(epoch, model, train_loader, optimizer)
@@ -344,10 +353,15 @@ if __name__ == '__main__':
             if valid_score >= best_score:
                 best_score = valid_score
                 torch.save(model.classifier.state_dict(), checkpoint_path)
+                torch.save(model.converter.state_dict(),
+                           converter_checkpoint_path)
                 print('best_score:', best_score)
 
     model.classifier.load_state_dict(
         torch.load(checkpoint_path)
+    )
+    model.converter.load_state_dict(
+        torch.load(converter_checkpoint_path)
     )
 
     cnt = inference(tokenizer, model, test_loader)

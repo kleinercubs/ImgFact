@@ -1,6 +1,6 @@
 # ImgFact
 
-This is the official github repository for the paper "ImgFact: Triplet Fact Grounding on Images".
+This is the official github repository for the paper "Beyond Entities: A Large-Scale Multi-Modal Knowledge Graph with Triplet Fact Grounding".
 
 We presented our implementation of ImgFact's construction pipeline and the experiments, and released the ImgFact dataset.
 

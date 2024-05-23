@@ -1,6 +1,6 @@
 # ImgFact
 
-This is the official github repository for the paper "Beyond Entities: A Large-Scale Multi-Modal Knowledge Graph with Triplet Fact Grounding".
+This is the official github repository for the paper [Beyond Entities: A Large-Scale Multi-Modal Knowledge Graph with Triplet Fact Grounding](https://ojs.aaai.org/index.php/AAAI/article/view/29828).
 
 We presented our implementation of ImgFact's construction pipeline and the experiments, and released the ImgFact dataset.
 

@@ -26,11 +26,9 @@ For example, given a triplet fact (**David_Beckham**, **Spouse**, **Victoria_Bec
 
 ## Download
 
-Due to Github’s limitations on large-scale data uploads, we have created a temporary Google Drive [GoogleDrive](https://drive.google.com/drive/folders/1G_QKlKSboI10ATW82Pp-1BqULxd-3TiC) with the username `imgfact2023@gmail.com` exclusively for storing our ImgFact data. We assure you that this link does not compromise any personal information.
-
 The triplets to path map file is [triplet_path_mapping.json](https://github.com/kleinercubs/ImgFact/blob/main/triplet_path_mapping.json).
 
-The titles of each image can be accessed by [GoogleDrive](https://drive.google.com/drive/folders/1ey-SnyxaENFPXYVVgy8riX-XfSOQoWXv?usp=share_link), each file contains all the images and triplets under that relationship.
+The images and the titles of each image can be accessed by [Zenodo](https://zenodo.org/records/11124297), each file contains all the images and triplets under that relationship.
 
 ## ImgFact API
 
@@ -135,7 +133,7 @@ All the codes related to the dataset evaluation and application are in [eval_and
 
 The evaluation and application are similar. The only difference is the information the model received.
 
-- Download the general task datasets from [Google Drive](https://drive.google.com/drive/folders/1Qaz7sbjo45JXD408QrJceXNIwV8UBDDy?usp=share_link) and unzip it at `eval_and_app` directory.
+- Download the general task datasets from [Zenodo](https://zenodo.org/records/11124297) and unzip it at `eval_and_app` directory.
 - Generate sub-task datasets by simply run script `generate.sh`.
 - Training and evaluation with different models on different sub-task:
 
